@@ -13,7 +13,8 @@ class mobilController extends Controller
     public function index()
     {
         $data = mobilModel::all();
-        return view('mobil.index')->with($data);
+        $no = 1;
+        return view('mobil.index', ['data' => $data, 'no' => $no]);
     }
 
     /**
@@ -44,8 +45,7 @@ class mobilController extends Controller
      */
     public function show(string $id)
     {
-        $data = mobilModel::where("noplat", $id)->first();
-        return view('mobil.edit', compact("data"));
+
     }
 
     /**
@@ -53,7 +53,8 @@ class mobilController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = mobilModel::where("noplat", $id)->first();
+        return view('mobil.edit', compact("data"));
     }
 
     /**
